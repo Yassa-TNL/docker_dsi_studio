@@ -5,6 +5,58 @@ Dockerfile for installing dsi-studio in an image
 A short installation guide for Ubuntu.
 ## Installing Docker
 For ubuntu users: https://docs.docker.com/install/linux/docker-ce/ubuntu/
+If you are using Ubuntu Linux, read on. Otherwise, install docker using the docker website.
+
+First, we need to install the Docker repositories, such that we can access the default docker images (like an Ubuntu image).
+
+```
+sudo apt-get update
+
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+```
+
+Ensure that the docker fingerprint (**0EBFCD88**) has been added to this machine.
+
+```
+sudo apt-key fingerprint 0EBFCD88
+```
+
+There should be an entry that has 0EBFCD88 and it should say "docker" around its entry.
+
+Now we have to add the repository based on your architecture...
+
+Most likely it will be x86_64/amd64:
+
+You may have to replace trusty with your parent Ubuntu distribution if you are using a newer version (e.g. xenial).
+
+For linux Mint (using Ubuntu 14, trusty):
+```
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   trusty \
+   stable"
+```
+
+Now install the docker application:
+
+```
+sudo apt-get update
+
+sudo apt-get install docker-ce
+```
+
+To test that the installation went OK, try:
+
+```
+sudo docker run hello-world
+```
 
 ## Installing the Docker image
 Put the dockerfile into a folder, e.g. 'dsi_studio'.
