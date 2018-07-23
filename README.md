@@ -59,32 +59,36 @@ sudo docker run hello-world
 ```
 
 ## Installing the Docker image
-Put the dockerfile into a folder, e.g. 'dsi_studio'.
 
-In terminal, navigate to one level up of the folder, and run the command 
-```
-docker build dsi_studio -t dsi_studio
-```
+If you do not have git (version control software), do:
 
-Ensure that `/usr/bin` is in the path on your machine by typing
 ```
-echo $PATH
+sudo apt-get install git
 ```
 
-Then move **dsi_studio_docker.sh** to `/usr/bin/dsi_studio_docker.sh`
+Now navigate in terminal to an empty directory, and do
 
-If you get an error about permissions, try `sudo mv dsi_studio_docker.sh /usr/bin/dsi_studio_docker.sh`
+```
+git clone https://github.com/yassalab/docker_dsi_studio 
+```
+
+Now we can build the docker image:
+```
+docker build docker_dsi_studio -t dsi_studio
+```
+
+Move **dsi_studio_docker.sh** to `/usr/bin/dsi_studio_docker.sh`
+```
+sudo mv docker_dsi_studio/dsi_studio_docker.sh /usr/bin/ 
+
+sudo chmod a+x /usr/bin/dsi_studio_docker.sh
+```
 
 
 ## Running DSI studio
 Now you can initialize the container by typing
 ```
 dsi_studio_docker.sh
-```
-
-If you get a permission error, modify the permissions to make the script executable
-```
-sudo chmod a+x /usr/bin/dsi_studio_docker.sh
 ```
 
 Running the container will mount the current directory into the `data` folder in the container.
