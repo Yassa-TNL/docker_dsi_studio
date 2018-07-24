@@ -49,7 +49,7 @@ RUN make clean
 WORKDIR /dsistudio
 
 # Add the extra dsi_studio_64.zip windows file 
-ADD ./dsi_studio_64.zip  .
+RUN wget -v https://www.dropbox.com/s/ew3rv0jrqqny2dq/dsi_studio_64.zip?dl=0 -O dsi_studio_64.zip
 
 # Cleanup the workspace
 RUN unzip dsi_studio_64.zip
